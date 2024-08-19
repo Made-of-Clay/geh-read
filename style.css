@@ -1,0 +1,85 @@
+:root {
+    --geh-orange: #ff4418;
+    --geh-green: #96c486;
+}
+@font-face {
+    font-family: 'Green Eggs and Spam';
+    src: url('GreenEggsAndSpamRegular.woff2') format('woff2');
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* background-color: #eee; */
+    background-color: var(--geh-orange);
+    font-family: sans-serif;
+}
+
+#container {
+    background-color: white;
+    box-shadow: 0 0 1rem #333;
+    height: 100vh;
+    margin: 0 auto;
+    max-width: 50vw;
+    padding: 1rem;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--geh-orange);
+    font-family: 'Green Eggs and Spam', serif;
+    margin-top: 0;
+    text-shadow: 0.025rem 0.05rem 0 black;
+}
+
+h1 {
+    text-align: center;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border: none;
+    border-collapse: inherit;
+    border-spacing: 0;
+    text-align: center;
+}
+th {
+    border-bottom: 1px solid var(--geh-green);
+}
+th:nth-child(2) {
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+        background-color: #f7f7f7;
+    }
+    &::after {
+        content: '↕';
+        font-family: monospace;
+        font-size: 1.25rem;
+        margin-left: 0.25rem;
+        text-align: center;
+    }
+    &.sort--asc::after {
+        content: '↑';
+    }
+    &.sort--desc::after {
+        content: '↓';
+    }
+}
+
+tr:nth-child(even) {
+    background-color: #eee;
+}
