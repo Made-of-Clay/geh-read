@@ -28,7 +28,7 @@ body {
 #container {
     background-color: white;
     box-shadow: 0 0 1rem #333;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0 auto;
     max-width: 50vw;
     padding: 1rem;
@@ -78,6 +78,10 @@ th:nth-child(2) {
     &.sort--desc::after {
         content: '↓';
     }
+}
+
+td {
+    text-transform: capitalize;
 }
 
 tr:nth-child(even) {
