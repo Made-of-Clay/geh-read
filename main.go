@@ -72,9 +72,44 @@ func mapWordsFromLines(lines []string) map[string]int {
 	return words
 }
 
+func getLongestKeyCount(data map[string]int) int {
+	longestCharCount := 0
+	for k := range data {
+		curKeyCount := len(k)
+		if curKeyCount > longestCharCount {
+			longestCharCount = curKeyCount
+		}
+	}
+	return longestCharCount
+}
+
+func buildString(count int, char string) string {
+	str := ""
+	for i := 0; i < count; i++ {
+		str += char
+	}
+	return str
+}
+
 func showOutput(data map[string]int) {
-	// row := func(val1 string, val2 int) {}
-	fmt.Println(data)
-	fmt.Println("| Word | Count |")
-	fmt.Println("|------|-------|")
+	longestKeyCount := getLongestKeyCount(data)
+	fmt.Println("longestCharCount", longestKeyCount)
+
+	row := func(val1 string, val2 int) {
+		curWordCount := len(val1)
+		spaceCharCount := longestKeyCount - curWordCount
+		spaces := buildString(spaceCharCount, " ")
+		// fmt.Println("spaces", spaces, "spaceCharCount", spaceCharCount)
+		fmt.Printf("| %s | %d |\n", val1+spaces, val2)
+	}
+	// fmt.Println(data)
+	dashCharCount := longestKeyCount - 4
+	dashes := buildString(dashCharCount, "-")
+	col1Spaces := buildString(4, " ")
+	// TODO get digit count when inside loop
+	// col2Spaces := buildString(7 - )
+	fmt.Printf("| Word%s | Count |\n", col1Spaces)
+	fmt.Printf("|------%s|-------|\n", dashes)
+	// TODO loop and output rows
+	row("foo", 1)
 }
