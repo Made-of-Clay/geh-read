@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -93,23 +94,25 @@ func buildString(count int, char string) string {
 
 func showOutput(data map[string]int) {
 	longestKeyCount := getLongestKeyCount(data)
-	fmt.Println("longestCharCount", longestKeyCount)
 
 	row := func(val1 string, val2 int) {
 		curWordCount := len(val1)
 		spaceCharCount := longestKeyCount - curWordCount
-		spaces := buildString(spaceCharCount, " ")
-		// fmt.Println("spaces", spaces, "spaceCharCount", spaceCharCount)
-		fmt.Printf("| %s | %d |\n", val1+spaces, val2)
+		spacesCol1 := buildString(spaceCharCount, " ")
+		val2Str := strconv.Itoa(val2)
+		spacesCol2Count := 5 - len(val2Str)
+		spacesCol2 := buildString(spacesCol2Count, " ")
+		fmt.Printf("| %s | %s |\n", val1+spacesCol1, val2Str+spacesCol2)
 	}
-	// fmt.Println(data)
+
 	dashCharCount := longestKeyCount - 4
 	dashes := buildString(dashCharCount, "-")
 	col1Spaces := buildString(4, " ")
-	// TODO get digit count when inside loop
-	// col2Spaces := buildString(7 - )
-	fmt.Printf("| Word%s | Count |\n", col1Spaces)
+
+	fmt.Printf("\n| Word%s | Count |\n", col1Spaces)
 	fmt.Printf("|------%s|-------|\n", dashes)
-	// TODO loop and output rows
-	row("foo", 1)
+
+	for word, count := range data {
+		row(word, count)
+	}
 }
