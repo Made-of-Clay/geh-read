@@ -8,10 +8,12 @@ import (
 )
 
 func main() {
-	text := readFile()
-	lines := formatText(text)
-	words := mapWordsFromLines(lines)
-	showOutput(words)
+	fmt.Println("try running cli")
+	TryCli()
+	// text := readFile()
+	// lines := formatText(text)
+	// words := mapWordsFromLines(lines)
+	// showOutput(words)
 }
 
 func readFile() string {
